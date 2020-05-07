@@ -1,7 +1,8 @@
 import time
 import random
 
-def print_pause(message, sleep_time = 1):
+
+def print_pause(message, sleep_time=1):
     print(message)
     time.sleep(sleep_time)
 
@@ -10,29 +11,35 @@ def bingo_intro(user_name, user_coins):
     print_pause("\nWelcome to Bingo!")
     print_pause("\nHow to Play:")
     print_pause("Pick 10 numbers from 1 to 100.")
-    print_pause("The computer displays 10 random numbers from 1 to 100.",1.5)
-    print_pause("You win coins if any of the numbers you picked match with the ones displayed.",2)
-    print_pause("You win 50 coins for each number match.",2)
-    print_pause("\nLet's get started!",3)
+    print_pause("The computer displays 10 random numbers from 1 to 100.", 1.5)
+    print_pause("You win coins if any of the numbers you picked "
+                "match with the ones displayed.", 2)
+    print_pause("You win 50 coins for each number match.", 2)
+    print_pause("\nLet's get started!", 3)
     bingo_pick(user_name, user_coins)
 
 
 def check_list(listToCheck):
     duplicate = len(listToCheck) == len(set(listToCheck))
     length = len(listToCheck) == 10
-    if duplicate and length:
+    not_in_range = list(x for x in listToCheck if int(x) < 1 or int(x) > 100)
+    if duplicate and length and (len(not_in_range) == 0):
         return True
     else:
-        if duplicate == False:
+        if not duplicate:
             print("Please pick different numbers")
-        if length == False:
+        if not length:
             print("Please pick 10 numbers")
+        if len(not_in_range):
+            print("Please pick numbers from 1 to 100")
+            print("Numbers not in range: ", not_in_range)
         return False
 
 
 def bingo_pick(user_name, user_coins):
     while True:
-        user_pick = list(input("\nPick 10 different numbers from 1 to 100: ").split(','))
+        user_pick = list(input("\nPick 10 different numbers "
+                               "from 1 to 100: ").split(','))
         if check_list(user_pick):
             bingo_play(user_name, user_coins, user_pick)
             break
@@ -47,15 +54,15 @@ def display_pick(comp_pick):
 def random_list():
     list = []
     while len(list) != 10:
-          r = str(random.randint(1,100))
-          if r not in list:
-              list.append(r)
+        r = str(random.randint(1, 100))
+        if r not in list:
+            list.append(r)
     return list
 
 
-def check_match(user_pick, comp_pick): 
-    user_set = set(user_pick) 
-    comp_set = set(comp_pick) 
+def check_match(user_pick, comp_pick):
+    user_set = set(user_pick)
+    comp_set = set(comp_pick)
     return list(user_set & comp_set)
 
 
@@ -79,7 +86,6 @@ def bingo_play(user_name, user_coins, user_pick):
     play_again(user_name, user_coins)
 
 
-
 def play_again(user_name, user_coins):
     while True:
         choose = input("\nWould you like to play again (y/n)? ")
@@ -91,7 +97,7 @@ def play_again(user_name, user_coins):
             break
 
 
-''''error handling for 1 to 100'''
-#bingo_intro('ak',500)
-#bingo_play('ak',500,[1,2,3,4,5,6,7,8,9,10])
-#bingo_play('ak',500,['1','2','3','4','5','6','7','8','9','10'])
+
+# bingo_pick('ak',500)
+# bingo_play('ak',500,[1,2,3,4,5,6,7,8,9,10])
+# bingo_play('ak',500,['1','2','3','4','5','6','7','8','9','10'])

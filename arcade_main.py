@@ -1,7 +1,8 @@
 import time
 import bingo
 
-def print_pause(message, sleep_time = 1):
+
+def print_pause(message, sleep_time=1):
     print(message)
     time.sleep(sleep_time)
 
@@ -62,6 +63,7 @@ def games_menu(user_name, user_coins):
             bingo.bingo_intro(user_name, user_coins)
             break
     choose_act(user_name, user_coins)
+
 
 intro()
 
