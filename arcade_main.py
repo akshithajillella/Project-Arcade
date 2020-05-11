@@ -1,8 +1,9 @@
 import time
 import bingo
+from guess_the_number import *
 
 
-def print_pause(message, sleep_time=1):
+def print_pause(message, sleep_time=0.5):
     print(message)
     time.sleep(sleep_time)
 
@@ -54,7 +55,7 @@ def games_menu(user_name, user_coins):
             rock_paper_scissor(user_name, user_coins)
             break
         elif choose_game == '2':
-            guess_the_num(user_name, user_coins)
+            guess_intro(user_name, user_coins)
             break
         elif choose_game == '3':
             dice_roll(user_name, user_coins)
