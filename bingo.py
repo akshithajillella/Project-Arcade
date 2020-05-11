@@ -2,7 +2,7 @@ import time
 import random
 
 
-def print_pause(message, sleep_time=1):
+def print_pause(message, sleep_time=0.5):
     print(message)
     time.sleep(sleep_time)
 
@@ -11,27 +11,32 @@ def bingo_intro(user_name, user_coins):
     print_pause("\nWelcome to Bingo!")
     print_pause("\nHow to Play:")
     print_pause("Pick 10 numbers from 1 to 100.")
-    print_pause("The computer displays 10 random numbers from 1 to 100.", 1.5)
+    print_pause("    For Example: 1,2,3,4,5,6,7,8,9,10 ")
+    print_pause("The computer displays 10 random numbers from 1 to 100.", 0.75)
     print_pause("You win coins if any of the numbers you picked "
-                "match with the ones displayed.", 2)
-    print_pause("You win 50 coins for each number match.", 2)
-    print_pause("\nLet's get started!", 3)
+                "match with the ones displayed.", 1)
+    print_pause("You win 50 coins for each number match.", 1)
+    print_pause("\nLet's get started!", 1.25)
     bingo_pick(user_name, user_coins)
 
 
 def check_list(listToCheck):
-    duplicate = len(listToCheck) == len(set(listToCheck))
-    length = len(listToCheck) == 10
-    not_in_range = list(x for x in listToCheck if int(x) < 1 or int(x) > 100)
+    try:
+        duplicate = len(listToCheck) == len(set(listToCheck))
+        length = len(listToCheck) == 10
+        not_in_range = list(x for x in listToCheck if int(x) < 1 or int(x) > 100)
+    except(ValueError,UnboundLocalError) as error:
+        print("Please pick integers only.")
+        return False
     if duplicate and length and (len(not_in_range) == 0):
         return True
     else:
         if not duplicate:
-            print("Please pick different numbers")
+            print("Please pick different numbers.")
         if not length:
-            print("Please pick 10 numbers")
+            print("Please pick 10 numbers.")
         if len(not_in_range):
-            print("Please pick numbers from 1 to 100")
+            print("Please pick numbers from 1 to 100.")
             print("Numbers not in range: ", not_in_range)
         return False
 
@@ -98,6 +103,5 @@ def play_again(user_name, user_coins):
 
 
 
-# bingo_pick('ak',500)
+# bingo_intro('ak',500)
 # bingo_play('ak',500,[1,2,3,4,5,6,7,8,9,10])
-# bingo_play('ak',500,['1','2','3','4','5','6','7','8','9','10'])
