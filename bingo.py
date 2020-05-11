@@ -1,5 +1,6 @@
 import time
 import random
+import re
 
 
 def print_pause(message, sleep_time=0.5):
@@ -10,8 +11,8 @@ def print_pause(message, sleep_time=0.5):
 def bingo_intro(user_name, user_coins):
     print_pause("\nWelcome to Bingo!")
     print_pause("\nHow to Play:")
-    print_pause("Pick 10 numbers from 1 to 100.")
-    print_pause("    For Example: 1,2,3,4,5,6,7,8,9,10 ")
+    print_pause("Pick 10 numbers from 1 to 100 (Numbers separated by ' ' or ',').")
+    print_pause("    For Example: 1,2,3,4,5,6,7,8,9,10 or 1 2 3 4 5 6 7 8 9 10")
     print_pause("The computer displays 10 random numbers from 1 to 100.", 0.75)
     print_pause("You win coins if any of the numbers you picked "
                 "match with the ones displayed.", 1)
@@ -43,8 +44,9 @@ def check_list(listToCheck):
 
 def bingo_pick(user_name, user_coins):
     while True:
-        user_pick = list(input("\nPick 10 different numbers "
-                               "from 1 to 100: ").split(','))
+        input_str = input("\nPick 10 different numbers "
+                               "from 1 to 100: ")
+        user_pick = list(re.split(',| ', input_str))
         if check_list(user_pick):
             bingo_play(user_name, user_coins, user_pick)
             break
@@ -103,5 +105,5 @@ def play_again(user_name, user_coins):
 
 
 
-# bingo_intro('ak',500)
+#bingo_intro('ak',500)
 # bingo_play('ak',500,[1,2,3,4,5,6,7,8,9,10])
