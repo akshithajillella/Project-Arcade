@@ -1,6 +1,8 @@
 import random
 import time
 
+final_coins = 0
+
 
 def print_pause(message, sleep_time=0.5):
     print(message)
@@ -17,7 +19,10 @@ def guess_intro(user_name, user_coins):
     print_pause("For every wrong guess you'll lose 25 coins each "
                 "from the final reward of 500 coins.")
     print_pause("Well then, Good Luck!\n", 1)
-    guess_play(user_name, user_coins)
+    global final_coins
+    final_coins = user_coins
+    guess_play(user_name)
+    return final_coins
 
 
 def check_guess(user_guess):
@@ -32,19 +37,19 @@ def check_guess(user_guess):
     else:
         return True
 
-def reward(user_name, user_coins, tries):
+def reward(user_name, tries):
     if tries < 20:
         reward_coins = 500 - (tries*25)
     else:
         reward_coins = 0
-    user_coins += reward_coins
+    global final_coins
+    final_coins += reward_coins
     print_pause(f"\nNumber of tries = {tries}")
     print_pause(f"You win {reward_coins} coins!")
-    print_pause(f"\n{user_name} coins: \U0001FA99{user_coins}")
-    return user_coins
+    print_pause(f"\n{user_name} coins: \U0001FA99{final_coins}")
 
 
-def guess_play(user_name, user_coins):
+def guess_play(user_name):
     print_pause(f"Hello, {user_name}! I've picked a number between 1 to 20 (both inclusive).")
     print_pause("Can you guess what the number is? Give it a try!.")
     rndm = random.randint(1,20)
@@ -58,7 +63,7 @@ def guess_play(user_name, user_coins):
             num = int(user_guess)
             if(rndm == num):
                 print("Good job,", user_name, "You guessed my number in", tries, "guesses!")
-                user_coins = reward(user_name, user_coins, tries)
+                reward(user_name, tries)
                 break
             elif(num < rndm):
                 print("Your guess is too low.\nTry again.")
@@ -67,16 +72,12 @@ def guess_play(user_name, user_coins):
             tries += 1
 
 
-def play_again(user_name, user_coins):
+def play_again(user_name):
     while True:
         choose = input("\nWould you like to play again (y/n)? ")
         if choose == 'y':
-            guess_play(user_name, user_coins)
+            guess_play(user_name)
             break
         elif choose == 'n':
             print_pause("Thanks for playing!")
             break
-        
-
-#guess_intro('ak', 500)
-#guess_play('ak', 500)

@@ -1,8 +1,8 @@
 import time
 import bingo
-from guess_the_number import *
-from dice_roll import *
-from rock_paper_scissors import *
+import guess_the_number
+import dice_roll
+# from rock_paper_scissors import *
 
 user_name = ''
 user_coins = 500
@@ -56,13 +56,13 @@ def games_menu(user_name, user_coins):
     while True:
         choose_game = input("\nWhich game would you like to play?\n")
         if choose_game == '1':
-            rock_paper_scissor(user_name, user_coins)
+            user_coins = rock_paper_scissor(user_name, user_coins)
             break
         elif choose_game == '2':
-            guess_intro(user_name, user_coins)
+            user_coins = guess_the_number.guess_intro(user_name, user_coins)
             break
         elif choose_game == '3':
-            dice_roll_intro(user_name, user_coins)
+            user_coins = dice_roll.dice_roll_intro(user_name, user_coins)
             break
         elif choose_game == '4':
             user_coins = bingo.bingo_intro(user_name, user_coins)
@@ -71,5 +71,3 @@ def games_menu(user_name, user_coins):
 
 
 intro()
-
-'''lucky draw U+1F3B0'''
