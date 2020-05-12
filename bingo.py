@@ -5,7 +5,7 @@ import re
 final_coins = 0
 
 
-def print_pause(message, sleep_time=0):
+def print_pause(message, sleep_time=0.5):
     print(message)
     time.sleep(sleep_time)
 

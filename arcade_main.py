@@ -2,13 +2,13 @@ import time
 import bingo
 import guess_the_number
 import dice_roll
-# from rock_paper_scissors import *
+import rock_paper_scissors
 
 user_name = ''
 user_coins = 500
 
 
-def print_pause(message, sleep_time=0):
+def print_pause(message, sleep_time=0.5):
     print(message)
     time.sleep(sleep_time)
 
@@ -56,7 +56,7 @@ def games_menu(user_name, user_coins):
     while True:
         choose_game = input("\nWhich game would you like to play?\n")
         if choose_game == '1':
-            user_coins = rock_paper_scissor(user_name, user_coins)
+            user_coins = rock_paper_scissors.play()
             break
         elif choose_game == '2':
             user_coins = guess_the_number.guess_intro(user_name, user_coins)
