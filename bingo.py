@@ -3,7 +3,9 @@ import random
 import re
 
 
-def print_pause(message, sleep_time=0.5):
+final_coins = 0
+
+def print_pause(message, sleep_time=0):
     print(message)
     time.sleep(sleep_time)
 
@@ -19,6 +21,7 @@ def bingo_intro(user_name, user_coins):
     print_pause("You win 50 coins for each number match.", 1)
     print_pause("\nLet's get started!", 1.25)
     bingo_pick(user_name, user_coins)
+    return final_coins
 
 
 def check_list(listToCheck):
@@ -55,7 +58,7 @@ def bingo_pick(user_name, user_coins):
 def display_pick(comp_pick):
     print_pause("Here are the lucky numbers!\n")
     for i in comp_pick:
-        print_pause(i, 2)
+        print_pause(i, 1)
 
 
 def random_list():
@@ -101,7 +104,10 @@ def play_again(user_name, user_coins):
             break
         elif choose == 'n':
             print_pause("Thanks for playing!")
+            final_coins = user_coins
+            print(final_coins)
             break
+
 
 
 

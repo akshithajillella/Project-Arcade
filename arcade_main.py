@@ -1,9 +1,14 @@
 import time
 import bingo
 from guess_the_number import *
+from dice_roll import *
+from rock_paper_scissors import *
+
+user_name = ''
+user_coins = 500
 
 
-def print_pause(message, sleep_time=0.5):
+def print_pause(message, sleep_time=0):
     print(message)
     time.sleep(sleep_time)
 
@@ -13,7 +18,6 @@ def intro():
     print_pause("We hope you have a great time.")
     print_pause("Shall we get started?")
     user_name = str(input("Enter username: "))
-    user_coins = 500
     print_pause(f"\nWelcome {user_name}!\nYour coins: \U0001FA99{user_coins}")
     choose_act(user_name, user_coins)
 
@@ -58,10 +62,10 @@ def games_menu(user_name, user_coins):
             guess_intro(user_name, user_coins)
             break
         elif choose_game == '3':
-            dice_roll(user_name, user_coins)
+            dice_roll_intro(user_name, user_coins)
             break
         elif choose_game == '4':
-            bingo.bingo_intro(user_name, user_coins)
+            user_coins = bingo.bingo_intro(user_name, user_coins)
             break
     choose_act(user_name, user_coins)
 
