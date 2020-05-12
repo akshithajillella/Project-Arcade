@@ -36,7 +36,7 @@ def play():
         comp_choice_name = 'Rock'
     elif comp_choice == 2: 
         comp_choice_name = 'paper'
-    else: 
+    else:
         comp_choice_name = 'scissor'
           
     print("Computer choice is: " + comp_choice_name) 
@@ -53,7 +53,10 @@ def play():
         (choice == 3 and comp_choice == 1)): 
         print("Rock wins =>", end = "") 
         result = "Rock"
-    else: 
+    elif((choice==1 and comp_choice==1) or (choice==2 and comp_choice==2)or (choice==3 and comp_choice==3)):
+        print("It's a tie")
+        result="Tie"
+    else:
         print("scissor wins =>", end = "") 
         result = "scissor"
   
@@ -61,6 +64,8 @@ def play():
         print("<== User wins ==>")
         print("U scored 50 coins")
         score = score+50
+    elif result=="Tie":
+        print("Tie!!")
     else: 
         print("<== Computer wins ==>")
         print("U lost 50 coins")

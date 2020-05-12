@@ -25,7 +25,7 @@ def intro():
 def choose_act(user_name, user_coins):
     while True:
         print_pause("\nWhat would you like to do?\n"
-                    "1. Check out he games!\U0001F3AE\n"
+                    "1. Check out the games!\U0001F3AE\n"
                     "2. Know your balance\U0001F4B0\n"
                     "3. Quit\U0001F622")
         choose = input("Your choice? ")
