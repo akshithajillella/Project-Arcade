@@ -13,9 +13,11 @@ def guess_intro(user_name, user_coins):
     print_pause("\nWelcome to Guess The Number!")
     print_pause("\nHow to Play:")
     print_pause("A number between 1 to 20 (both inclusive) is selected.")
-    print_pause("You have to guess the selected number in the least number of tries.")
+    print_pause("You have to guess the selected number "
+                "in the least number of tries.")
     print_pause("After every wrong guess, "
-                "you'll be provided a hint to guide you towards the number.", 0.75)
+                "you'll be provided a hint to "
+                "guide you towards the number.", 0.75)
     print_pause("For every wrong guess you'll lose 25 coins each "
                 "from the final reward of 500 coins.")
     print_pause("Well then, Good Luck!\n", 1)
@@ -37,6 +39,7 @@ def check_guess(user_guess):
     else:
         return True
 
+
 def reward(user_name, tries):
     if tries < 20:
         reward_coins = 500 - (tries*25)
@@ -50,9 +53,10 @@ def reward(user_name, tries):
 
 
 def guess_play(user_name):
-    print_pause(f"Hello, {user_name}! I've picked a number between 1 to 20 (both inclusive).")
+    print_pause(f"Hello, {user_name}! I've picked a number "
+                "between 1 to 20 (both inclusive).")
     print_pause("Can you guess what the number is? Give it a try!.")
-    rndm = random.randint(1,20)
+    rndm = random.randint(1, 20)
     tries = 1
     while True:
         user_guess = input()
@@ -62,7 +66,8 @@ def guess_play(user_name):
         else:
             num = int(user_guess)
             if(rndm == num):
-                print("Good job,", user_name, "You guessed my number in", tries, "guesses!")
+                print("Good job,", user_name, ".You guessed "
+                      "my number in", tries, "guesses!")
                 reward(user_name, tries)
                 break
             elif(num < rndm):

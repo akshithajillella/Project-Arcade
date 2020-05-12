@@ -13,8 +13,10 @@ def print_pause(message, sleep_time=0.5):
 def bingo_intro(user_name, user_coins):
     print_pause("\nWelcome to Bingo!")
     print_pause("\nHow to Play:")
-    print_pause("Pick 10 numbers from 1 to 100 (Numbers separated by ' ' or ',').")
-    print_pause("    For Example: 1,2,3,4,5,6,7,8,9,10 or 1 2 3 4 5 6 7 8 9 10")
+    print_pause("Pick 10 numbers from 1 to 100 "
+                "(Numbers separated by ' ' or ',').")
+    print_pause("    For Example: 1,2,3,4,5,6,7,8,9,10 "
+                "or 1 2 3 4 5 6 7 8 9 10")
     print_pause("The computer displays 10 random numbers from 1 to 100.", 0.75)
     print_pause("You win coins if any of the numbers you picked "
                 "match with the ones displayed.", 1)
@@ -31,7 +33,7 @@ def check_list(listToCheck):
         duplicate = len(listToCheck) == len(set(listToCheck))
         length = len(listToCheck) == 10
         not_in_range = list(x for x in listToCheck if int(x) < 1 or int(x) > 100)
-    except(ValueError,UnboundLocalError) as error:
+    except(ValueError, UnboundLocalError) as error:
         print("Please pick integers only.")
         return False
     if duplicate and length and (len(not_in_range) == 0):
@@ -50,10 +52,10 @@ def check_list(listToCheck):
 def bingo_pick(user_name):
     while True:
         input_str = input("\nPick 10 different numbers "
-                               "from 1 to 100: ")
+                          "from 1 to 100: ")
         user_pick = list(re.split(',| ', input_str))
         if check_list(user_pick):
-            bingo_play(user_name,user_pick)
+            bingo_play(user_name, user_pick)
             break
 
 
@@ -89,7 +91,7 @@ def reward(user_name, match_list):
     print_pause(f"\n{user_name} coins: \U0001FA99{final_coins}")
 
 
-def bingo_play(user_name,user_pick):
+def bingo_play(user_name, user_pick):
     print_pause(f"Your pick: {user_pick}")
     comp_pick = random_list()
     display_pick(comp_pick)

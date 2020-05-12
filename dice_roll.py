@@ -37,7 +37,7 @@ def dice_roll(user_name):
     choice = int(input("\nEnter your choice : "))
     bet_amount = int(input("\nEnter your bet amount : "))
     global final_coins
-    if bet_amount < 100 :
+    if bet_amount < 100:
         print("\nMinimum bet amount is 100 ")
         bet_amount = int(input("\nEnter bet amount : "))
     elif bet_amount > final_coins:
@@ -46,7 +46,7 @@ def dice_roll(user_name):
     final_coins = final_coins - bet_amount
     mini = 2
     maxi = 12
-    check = randint(mini,maxi)
+    check = randint(mini, maxi)
     print_pause(f"\nSum of numbers appeared when dice are rolled is {check}\n")
     if choice == 1:
         if 2 <= check and check <= 6:
@@ -57,19 +57,18 @@ def dice_roll(user_name):
             print_pause("\n**************YOU LOSE**************\n")
             dice_roll_per(user_name)
     elif choice == 2:
-        if check==7:
-             final_coins += bet_amount*3
-             print_pause("\n**************YOU WIN************\n")
-             dice_roll_per(user_name)
+        if check == 7:
+            final_coins += bet_amount*3
+            print_pause("\n**************YOU WIN************\n")
+            dice_roll_per(user_name)
         else:
             print_pause("\n**************YOU LOSE**************\n")
             dice_roll_per(user_name)
     else:
         if 8 <= check and check <= 12:
-             final_coins += bet_amount*3
-             print_pause("\n**************YOU WIN************\n")
-             dice_roll_per(user_name)
+            final_coins += bet_amount*3
+            print_pause("\n**************YOU WIN************\n")
+            dice_roll_per(user_name)
         else:
             print_pause("\n**************YOU LOSE**************\n")
             dice_roll_per(user_name)
-
