@@ -1,8 +1,6 @@
 import time
 import bingo
 import guess_the_number
-import dice_roll
-import rock_paper_scissors
 
 user_name = ''
 user_coins = 500
@@ -49,22 +47,14 @@ def check_coins(user_name, user_coins):
 
 def games_menu(user_name, user_coins):
     print_pause("\nGames:\n"
-                "1. Rock paper scissors\n"
-                "2. Guess the Number!\n"
-                "3. Dice Rolling\U0001F3B2\n"
-                "4. Bingo!")
+                "1. Guess the Number!\n"
+                "2. Bingo!")
     while True:
         choose_game = input("\nWhich game would you like to play?\n")
         if choose_game == '1':
-            user_coins = rock_paper_scissors.play()
-            break
-        elif choose_game == '2':
             user_coins = guess_the_number.guess_intro(user_name, user_coins)
             break
-        elif choose_game == '3':
-            user_coins = dice_roll.dice_roll_intro(user_name, user_coins)
-            break
-        elif choose_game == '4':
+        elif choose_game == '2':
             user_coins = bingo.bingo_intro(user_name, user_coins)
             break
     choose_act(user_name, user_coins)
